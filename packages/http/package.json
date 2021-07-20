@@ -1,0 +1,27 @@
+{
+    "name": "@typescript-error/http",
+    "version": "0.0.1",
+    "description": "",
+    "author": {
+        "name": "Peter Placzek",
+        "email": "tadashi@animesu.net",
+        "url": "https:/github.com/tada5hi"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@typescript-error/core": "0.0.1"
+    },
+    "bin": {
+        "typescript-error-http": "dist/cli/index.js"
+    },
+    "devDependencies": {
+        "@types/mustache": "^4.1.2",
+        "@types/node": "^16.3.3",
+        "@types/yargs": "^17.0.2",
+        "mustache": "^4.2.0",
+        "mustache.js": "^1.0.0",
+        "reflect-metadata": "^0.1.13",
+        "ts-node": "^10.1.0",
+        "yargs": "^17.0.1"
+    }
+}
