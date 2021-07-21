@@ -14,7 +14,7 @@
         "build": "rm -rf ./dist && tsc"
     },
     "dependencies": {
-        "@typescript-error/core": "0.0.1"
+        "@typescript-error/core": "0.0.2"
     },
     "devDependencies": {
         "@types/mustache": "^4.1.2",
