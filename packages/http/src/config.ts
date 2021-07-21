@@ -1,4 +1,4 @@
-export const ClientErrorMapping = {
+export const ClientErrorOptions = {
     BadRequest: {statusCode: 400, message: "Bad Request", code: "BAD_REQUEST"},
     Unauthorized: {statusCode: 401, message: "Unauthorized", code: "UNAUTHORIZED"},
     Forbidden: {statusCode: 403, message: "Forbidden", code: "FORBIDDEN"},
@@ -48,7 +48,7 @@ export const ClientErrorMapping = {
     ClientClosedRequest: {statusCode: 499, message: "Client Closed Request", code: "CLIENT_CLOSED_REQUEST"}
 };
 
-export const ServerErrorMapping = {
+export const ServerErrorOptions = {
     InternalServerError: {statusCode: 500, message: "Internal Server Error", code: "INTERNAL_SERVER_ERROR"},
     NotImplemented: {statusCode: 501, message: "Not Implemented", code: "NOT_IMPLEMENTED"},
     BadGateway: {statusCode: 502, message: "Bad Gateway", code: "BAD_GATEWAY"},

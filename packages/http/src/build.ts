@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 
 import {render} from 'mustache';
-import {ClientErrorMapping, ServerErrorMapping} from "./config";
+import {ClientErrorOptions, ServerErrorOptions} from "./config";
 
 type TemplateClientBuildType = 'client';
 type TemplateServerBuildType = 'server';
@@ -14,7 +14,7 @@ export async function buildErrors(type: TemplateBuildType) {
     const destDirPath = path.join(__dirname + '/' + type);
 
     const fileNames : string[] = [];
-    const mapping : Record<string, {code: string, statusCode: number, message: string}> = type === 'client' ? ClientErrorMapping : ServerErrorMapping;
+    const mapping : Record<string, {code: string, statusCode: number, message: string}> = type === 'client' ? ClientErrorOptions : ServerErrorOptions;
 
     for(let key in mapping) {
         const fileName = mapping[key].statusCode + '-' + (mapping[key].code).toLowerCase().replaceAll('_','-')+'.ts';
@@ -26,7 +26,7 @@ export async function buildErrors(type: TemplateBuildType) {
             ...mapping[key]
         });
 
-        await saveErrorFile(content, destFilePath);
+        await saveFile(content, destFilePath);
 
         fileNames.push(fileName);
     }
@@ -39,10 +39,10 @@ export async function buildErrors(type: TemplateBuildType) {
     }).reduce((prev, current) => prev+"\n"+current);
 
     const destFilePath : string = path.join(destDirPath + '/index.ts');
-    await saveErrorFile(content, destFilePath);
+    await saveFile(content, destFilePath);
 }
 
-export async function saveErrorFile(content: string, filePath: string) : Promise<void> {
+export async function saveFile(content: string, filePath: string) : Promise<void> {
     return new Promise(((resolve: (value?: any) => void, reject) => {
         return fs.writeFile(filePath, content, (err: Error) => {
             if(err) reject(err);
@@ -63,12 +63,3 @@ async function loadTemplate() : Promise<string> {
         })
     })
 }
-
-(async () => {
-    try {
-        await buildErrors('client');
-        await buildErrors('server');
-    } catch (e) {
-        console.log(e);
-    }
-})()
