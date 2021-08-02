@@ -1,12 +1,31 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
 export class ImATeapot extends BaseError {
-    constructor(message?: string, options?: ErrorOptions) {
+    constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `IM_A_TEAPOT`;
         options.statusCode = options.statusCode ?? 418;
+        options.decorateMessage = options.decorateMessage ?? false;
+        options.logMessage = options.logMessage ?? false
 
-        message = message ?? `I'm a Teapot`;
+        let message : string | undefined = typeof data === 'string' ? data : undefined;
+        if(!message) {
+            if(
+                data instanceof Error &&
+                !options.decorateMessage
+            ) {
+                message = data.message;
+            } else {
+                message = `I'm a Teapot`;
+            }
+        }
+
+        if(
+            !options.previous &&
+            data instanceof Error
+        ) {
+            options.previous = data;
+        }
 
         super(message, options);
     }

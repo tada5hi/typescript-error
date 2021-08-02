@@ -22,6 +22,8 @@ export async function buildErrors(type: TemplateBuildType) {
 
         const content = render(tpl, {
             namespaceFile: 'index.ts',
+            decorateMessage: type === 'server',
+            logMessage: type === 'server',
             class: key,
             ...mapping[key]
         });
