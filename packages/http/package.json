@@ -23,6 +23,6 @@
         "mustache": "^4.2.0",
         "reflect-metadata": "^0.1.13",
         "ts-node": "^10.1.0",
-        "yargs": "^17.0.1"
+        "yargs": "^17.1.0"
     }
 }
