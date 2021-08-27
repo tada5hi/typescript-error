@@ -11,7 +11,8 @@
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "scripts": {
-        "build": "rm -rf ./dist && tsc"
+        "build": "rm -rf ./dist && tsc",
+        "generate": "ts-node src/cli/index.ts generate"
     },
     "dependencies": {
         "@typescript-error/core": "^0.0.6"
@@ -25,5 +26,5 @@
         "ts-node": "^10.2.1",
         "yargs": "^17.1.1"
     },
-    "gitHead": "92892bdd8a269e893c75d9c2d0e11af043355a87"
+    "gitHead": "40a42170ef9dbcc9b9839e24c9fef35eb124e089"
 }

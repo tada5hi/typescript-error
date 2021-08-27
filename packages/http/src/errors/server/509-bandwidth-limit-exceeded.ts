@@ -1,13 +1,13 @@
 import { ErrorOptions } from "@typescript-error/core";
-import { {{baseClass}} } from "../base";
+import { ServerError } from "../base";
 
-export class {{{class}}} extends {{baseClass}} {
+export class BandwidthLimitExceededError extends ServerError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? `{{code}}`;
-        options.statusCode = options.statusCode ?? {{statusCode}};
-        options.decorateMessage = options.decorateMessage ?? {{{decorateMessage}}};
-        options.logMessage = options.logMessage ?? {{{logMessage}}}
+        options.code = options.code ?? `BANDWIDTH_LIMIT_EXCEEDED`;
+        options.statusCode = options.statusCode ?? 509;
+        options.decorateMessage = options.decorateMessage ?? true;
+        options.logMessage = options.logMessage ?? true
 
         let message : string | undefined = typeof data === 'string' ? data : undefined;
         if(!message) {
@@ -17,7 +17,7 @@ export class {{{class}}} extends {{baseClass}} {
             ) {
                 message = data.message;
             } else {
-                message = `{{{message}}}`;
+                message = `Bandwidth Limit Exceeded`;
             }
         }
 

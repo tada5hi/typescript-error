@@ -1,23 +1,30 @@
 import {render} from 'mustache';
 import path from 'path';
-import {ClientErrorOptions, ServerErrorOptions} from "../config";
-import {loadTemplate, saveFile} from "./utils";
+import {ClientErrorSettings, ServerErrorSettings} from "../config";
+import {ErrorSetting} from "../config/type";
+import {hasOwnProperty, loadTemplate, saveFile} from "./utils";
 
-type TemplateClientBuildType = 'client';
-type TemplateServerBuildType = 'server';
-type TemplateBuildType = TemplateClientBuildType | TemplateServerBuildType;
+/**
+ * Generate client and server errors.
+ */
+export async function generateErrors() : Promise<void> {
+    const settings : Record<string, ErrorSetting> = {
+        ...ClientErrorSettings,
+        ...ServerErrorSettings
+    };
 
-export async function buildErrors(type: TemplateBuildType) {
+    const destDirPath = path.join(__dirname, '..', 'errors');
+    const items : { fileName: string, isServerError: boolean }[] = [];
+
     const tpl = await loadTemplate('error.tpl');
 
-    const destDirPath = path.join(__dirname, '..', type);
+    for(let key in settings) {
+        const isServerError : boolean = hasOwnProperty(ServerErrorSettings, key);
 
-    const items : {fileName: string, className: string, classErrorSuffix: boolean}[] = [];
-    const mapping : Record<string, {code: string, statusCode: number, message: string}> = type === 'client' ? ClientErrorOptions : ServerErrorOptions;
+        const pathSuffix : string = isServerError ? 'server' : 'client';
 
-    for(let key in mapping) {
-        const fileName : string = mapping[key].statusCode + '-' + (mapping[key].code).toLowerCase().replaceAll('_','-')+'.ts';
-        const destFilePath : string = path.join(destDirPath + '/' + fileName);
+        const fileName : string = settings[key].statusCode + '-' + (settings[key].code).toLowerCase().replaceAll('_','-')+'.ts';
+        const destFilePath : string = path.join(destDirPath, pathSuffix, fileName);
 
         let className : string = key;
 
@@ -26,48 +33,41 @@ export async function buildErrors(type: TemplateBuildType) {
             className += 'Error';
         }
 
+        const baseClassName : string = isServerError ? 'ServerError' : 'ClientError';
+
         const content = render(tpl, {
             namespaceFile: 'index.ts',
-            decorateMessage: type === 'server',
-            logMessage: type === 'server',
+            decorateMessage: isServerError,
+            logMessage: isServerError,
             class: className,
-            ...mapping[key]
+            baseClass: baseClassName,
+            ...settings[key]
         });
 
         await saveFile(content, destFilePath);
 
         items.push({
             fileName,
-            className,
-            classErrorSuffix
+            isServerError
         });
     }
 
     // default
-    let content : string = items.map(item => {
+    const lines : string[] = [
+        `export * from "./base";`
+    ];
+
+    items.map(item => {
         const parts = item.fileName.split('.')
         parts.pop();
 
-        return `export * from "./${parts.join('.')}";`;
-    }).reduce((prev, current) => prev+"\n"+current);
+        const relativeDirectory : string = item.isServerError ? 'server' : 'client';
+        lines.push(`export * from "./${relativeDirectory}/${parts.join('.')}";`);
+    });
+
+    let content : string = lines.join("\n");
 
     let destFilePath : string = path.join(destDirPath + '/index.ts');
-    await saveFile(content, destFilePath);
-
-    // bundle
-    content = items
-        .map(item => {
-            const parts = item.fileName.split('.')
-            parts.pop();
-
-            const alias : string = item.classErrorSuffix ? item.className : item.className.substr(0, item.className.length - 5);
-
-            return `export {${item.className} as ${alias}} from "./${parts.join('.')}";`;
-        })
-        .reduce((prev, current) => prev+"\n"+current);
-    // += `\n` + `export {\n\t${aliases.join(`,\n\t`)}\n};`
-
-    destFilePath = path.join(destDirPath + '/aliases.ts');
     await saveFile(content, destFilePath);
 }
 

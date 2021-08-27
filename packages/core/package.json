@@ -13,5 +13,5 @@
     "scripts": {
         "build": "rm -rf ./dist && tsc"
     },
-    "gitHead": "92892bdd8a269e893c75d9c2d0e11af043355a87"
+    "gitHead": "40a42170ef9dbcc9b9839e24c9fef35eb124e089"
 }
