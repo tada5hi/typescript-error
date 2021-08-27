@@ -1,6 +1,6 @@
 {
     "name": "@typescript-error/http",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "",
     "author": {
         "name": "Peter Placzek",
@@ -14,7 +14,7 @@
         "build": "rm -rf ./dist && tsc"
     },
     "dependencies": {
-        "@typescript-error/core": "0.0.4"
+        "@typescript-error/core": "^0.0.5"
     },
     "devDependencies": {
         "@types/mustache": "^4.1.2",
