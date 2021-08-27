@@ -55,7 +55,6 @@ export async function buildErrors(type: TemplateBuildType) {
     await saveFile(content, destFilePath);
 
     // bundle
-    const aliases : string[] = [];
     content = items
         .map(item => {
             const parts = item.fileName.split('.')
@@ -63,12 +62,10 @@ export async function buildErrors(type: TemplateBuildType) {
 
             const alias : string = item.classErrorSuffix ? item.className : item.className.substr(0, item.className.length - 5);
 
-            aliases.push(alias);
-
-            return `import {${item.className} as ${alias}} from "./${parts.join('.')}";`;
+            return `export {${item.className} as ${alias}} from "./${parts.join('.')}";`;
         })
         .reduce((prev, current) => prev+"\n"+current);
-    content += `\n` + `export {\n\t${aliases.join(`,\n\t`)}\n};`
+    // += `\n` + `export {\n\t${aliases.join(`,\n\t`)}\n};`
 
     destFilePath = path.join(destDirPath + '/aliases.ts');
     await saveFile(content, destFilePath);

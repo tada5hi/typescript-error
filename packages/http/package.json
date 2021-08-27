@@ -24,5 +24,6 @@
         "reflect-metadata": "^0.1.13",
         "ts-node": "^10.2.1",
         "yargs": "^17.1.1"
-    }
+    },
+    "gitHead": "92892bdd8a269e893c75d9c2d0e11af043355a87"
 }

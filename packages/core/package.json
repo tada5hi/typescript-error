@@ -12,5 +12,6 @@
     "typings": "dist/index.d.ts",
     "scripts": {
         "build": "rm -rf ./dist && tsc"
-    }
+    },
+    "gitHead": "92892bdd8a269e893c75d9c2d0e11af043355a87"
 }

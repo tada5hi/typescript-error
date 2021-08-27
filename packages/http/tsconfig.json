@@ -7,8 +7,7 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "lib": [
-          "ESNext",
-          "dom"
+            "ESNext"
         ],
         "module": "commonjs",
         "newLine": "LF",
@@ -19,9 +18,11 @@
         "noUnusedParameters": false,
         "noUnusedLocals": true,
         "outDir": "dist",
+        "rootDir": "src",
+        "baseUrl": ".",
         "sourceMap": true,
         "strictNullChecks": false,
-        "target": "es6"
+        "target": "ESNext"
     },
     "include": [
         "src/**/*.ts"
