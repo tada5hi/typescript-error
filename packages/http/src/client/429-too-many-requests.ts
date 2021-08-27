@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class TooManyRequests extends BaseError {
+export class TooManyRequestsError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `TOO_MANY_REQUESTS`;

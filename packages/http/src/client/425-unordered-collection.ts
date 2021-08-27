@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class UnorderedCollection extends BaseError {
+export class UnorderedCollectionError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `UNORDERED_COLLECTION`;

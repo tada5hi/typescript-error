@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class GatewayTimeout extends BaseError {
+export class GatewayTimeoutError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `GATEWAY_TIMEOUT`;

@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class Gone extends BaseError {
+export class GoneError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `GONE`;

@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class FailedDependency extends BaseError {
+export class FailedDependencyError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `FAILED_DEPENDENCY`;

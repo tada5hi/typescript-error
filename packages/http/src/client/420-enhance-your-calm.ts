@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class EnhanceYourCalm extends BaseError {
+export class EnhanceYourCalmError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `ENHANCE_YOUR_CALM`;

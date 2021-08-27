@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class HTTPVersionNotSupported extends BaseError {
+export class HTTPVersionNotSupportedError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `HTTP_VERSION_NOT_SUPPORTED`;

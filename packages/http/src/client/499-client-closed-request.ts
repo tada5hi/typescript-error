@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class ClientClosedRequest extends BaseError {
+export class ClientClosedRequestError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `CLIENT_CLOSED_REQUEST`;

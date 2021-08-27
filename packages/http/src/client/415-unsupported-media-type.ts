@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class UnsupportedMediaType extends BaseError {
+export class UnsupportedMediaTypeError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `UNSUPPORTED_MEDIA_TYPE`;

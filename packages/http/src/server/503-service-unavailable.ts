@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class ServiceUnavailable extends BaseError {
+export class ServiceUnavailableError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `SERVICE_UNAVAILABLE`;

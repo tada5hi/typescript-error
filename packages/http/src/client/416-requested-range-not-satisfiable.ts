@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class RequestedRangeNotSatisfiable extends BaseError {
+export class RequestedRangeNotSatisfiableError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `REQUESTED_RANGE_NOT_SATISFIABLE`;

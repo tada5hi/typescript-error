@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class RequestURITooLong extends BaseError {
+export class RequestURITooLongError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `REQUEST_URI_TOO_LONG`;

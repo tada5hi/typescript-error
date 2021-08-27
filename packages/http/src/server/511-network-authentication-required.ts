@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class NetworkAuthenticationRequired extends BaseError {
+export class NetworkAuthenticationRequiredError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `NETWORK_AUTHENTICATION_REQUIRED`;

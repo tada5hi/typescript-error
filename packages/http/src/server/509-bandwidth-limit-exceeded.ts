@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class BandwidthLimitExceeded extends BaseError {
+export class BandwidthLimitExceededError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `BANDWIDTH_LIMIT_EXCEEDED`;

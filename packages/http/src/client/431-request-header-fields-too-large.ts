@@ -1,6 +1,6 @@
 import { BaseError, ErrorOptions } from "@typescript-error/core";
 
-export class RequestHeaderFieldsTooLarge extends BaseError {
+export class RequestHeaderFieldsTooLargeError extends BaseError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `REQUEST_HEADER_FIELDS_TOO_LARGE`;
