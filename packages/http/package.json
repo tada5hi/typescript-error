@@ -11,7 +11,7 @@
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "scripts": {
-        "build": "rm -rf ./dist && tsc",
+        "build": "rimraf ./dist && tsc",
         "generate": "ts-node src/cli/index.ts generate"
     },
     "dependencies": {
@@ -23,8 +23,9 @@
         "@types/yargs": "^17.0.2",
         "mustache": "^4.2.0",
         "reflect-metadata": "^0.1.13",
+        "rimraf": "^3.0.2",
         "ts-node": "^10.2.1",
         "yargs": "^17.1.1"
     },
-    "gitHead": "40a42170ef9dbcc9b9839e24c9fef35eb124e089"
+    "gitHead": "0f53431870c9082e5c0bc8097bfc2551befbead0"
 }

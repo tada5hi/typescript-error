@@ -5,3 +5,5 @@ export {
     ClientErrorSettings,
     ServerErrorSettings
 }
+
+export * from './type';

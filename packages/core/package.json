@@ -11,7 +11,10 @@
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "scripts": {
-        "build": "rm -rf ./dist && tsc"
+        "build": "rimraf ./dist && tsc"
     },
-    "gitHead": "40a42170ef9dbcc9b9839e24c9fef35eb124e089"
+    "gitHead": "40a42170ef9dbcc9b9839e24c9fef35eb124e089",
+    "devDependencies": {
+        "rimraf": "^3.0.2"
+    }
 }
