@@ -1,7 +1,7 @@
 import {render} from 'mustache';
 import path from 'path';
 import {ClientErrorSettings, ServerErrorSettings} from "../config";
-import {ErrorSetting} from "../config/type";
+import {ErrorSetting} from "../config";
 import {hasOwnProperty, loadTemplate, saveFile} from "./utils";
 
 /**
