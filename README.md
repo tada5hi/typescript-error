@@ -2,8 +2,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/Tada5hi/typescript-error/badge.svg)](https://snyk.io/test/github/Tada5hi/typescript-error)
 
 # @typescript-error ⚡	
-This repository is under heavy development at the moment and not open for public usage.
-
+This monorepo contains error interfaces/classes in general and explicit implementations for http & websocket errors.
 ## Packages
 The repository contains the following packages:
 
