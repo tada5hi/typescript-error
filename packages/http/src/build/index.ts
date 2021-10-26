@@ -23,7 +23,7 @@ export async function generateErrors() : Promise<void> {
 
         const pathSuffix : string = isServerError ? 'server' : 'client';
 
-        const fileName : string = settings[key].statusCode + '-' + (settings[key].code).toLowerCase().replaceAll('_','-')+'.ts';
+        const fileName : string = settings[key].statusCode + '-' + (settings[key].code).toLowerCase().replace('/_/g','-')+'.ts';
         const destFilePath : string = path.join(destDirPath, pathSuffix, fileName);
 
         let className : string = key;

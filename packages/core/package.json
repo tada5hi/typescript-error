@@ -11,10 +11,13 @@
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "scripts": {
-        "build": "rimraf ./dist && tsc"
+        "build": "rimraf ./dist && tsc -p tsconfig.build.json"
     },
-    "gitHead": "40a42170ef9dbcc9b9839e24c9fef35eb124e089",
     "devDependencies": {
         "rimraf": "^3.0.2"
-    }
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "gitHead": "40a42170ef9dbcc9b9839e24c9fef35eb124e089"
 }
