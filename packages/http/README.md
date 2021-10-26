@@ -21,8 +21,73 @@ npm install @typescript-error/http --save
 
 ## Usage
 
-The usage to implement and extend the error classes are similar to the concept described
-in the [@typescript-error/core](https://github.com/Tada5hi/typescript-error/tree/master/packages/core#usage) usage section.
+Just import one of the [client](#client) or [server](#server) error classes and use them
+directly in your code base.
+
+**Basic**
+```typescript
+import {
+    InternalServerError,
+    NotFoundError
+} from "@typescript-error/http";
+
+const clientError = new NotFoundError();
+
+console.log(clientError.getOption('statusCode'));
+// 404
+
+console.log(clientError.getOption('logMessage'));
+// false
+
+console.log(clientError.getOption('code'));
+// NOT_FOUND
+
+// ------------------------------------
+
+const serverError = new InternalServerError({
+    logLevel: 'warning'
+});
+
+console.log(serverError.getOption('statusCode'));
+// 500
+
+console.log(serverError.getOption('logMessage'));
+// true
+
+console.log(serverError.getOption('code'));
+// INTERNAL_SERVER_ERROR
+
+console.log(serverError.getOption('logLevel'));
+// warning
+```
+
+Another way to use the predefined error classes is to extend them,
+with own `options`.
+
+**Extend**
+
+```typescript
+import {
+    ErrorOptions,
+    mergeErrorOptions,
+    NotFoundError
+} from "@typescript-error/http";
+
+
+class UserNotFound extends NotFoundError {
+    constructor(options?: ErrorOptions) {
+        super(
+            'The user was not found.', 
+            mergeErrorOptions(
+                {
+                    code: 'USER_NOT_FOUND'
+                },
+                ...(options ? options : {})
+            )
+        );
+    }
+}
+```
 
 ## Types
 
