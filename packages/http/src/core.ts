@@ -1,9 +1,11 @@
 import {
     BaseError,
-    ErrorOptions
+    ErrorOptions,
+    mergeErrorOptions
 } from "@typescript-error/core";
 
 export {
     BaseError,
-    ErrorOptions
+    ErrorOptions,
+    mergeErrorOptions
 }

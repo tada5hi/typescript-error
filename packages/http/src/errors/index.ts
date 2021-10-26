@@ -22,7 +22,7 @@ export * from "./client/422-unprocessable-entity";
 export * from "./client/423-locked";
 export * from "./client/424-failed-dependency";
 export * from "./client/425-unordered-collection";
-export * from "./client/424-upgrade-required";
+export * from "./client/426-upgrade-required";
 export * from "./client/428-precondition-required";
 export * from "./client/429-too-many-requests";
 export * from "./client/431-request-header-fields-too-large";

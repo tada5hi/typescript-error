@@ -115,7 +115,7 @@
         "code": "UNORDERED_COLLECTION"
     },
     "UpgradeRequired": {
-        "statusCode": 424,
+        "statusCode": 426,
         "message": "Upgrade Required",
         "code": "UPGRADE_REQUIRED"
     },
