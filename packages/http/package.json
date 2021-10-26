@@ -1,6 +1,6 @@
 {
     "name": "@typescript-error/http",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "author": {
         "name": "Peter Placzek",
@@ -15,7 +15,7 @@
         "generate": "ts-node src/cli/index.ts generate"
     },
     "dependencies": {
-        "@typescript-error/core": "^1.0.0"
+        "@typescript-error/core": "^1.0.1"
     },
     "devDependencies": {
         "@types/mustache": "^4.1.2",
