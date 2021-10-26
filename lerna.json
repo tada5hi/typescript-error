@@ -10,9 +10,7 @@
             "ignoreChanges": [
                 "*.md",
                 "package.json"
-            ],
-            "message": "chore(release): publish",
-            "registry": "https://npm.pkg.github.com"
+            ]
         }
     },
     "version": "independent",

@@ -1,9 +1,9 @@
 [![npm version](https://badge.fury.io/js/@typescript-error%2Fcore.svg)](https://badge.fury.io/js/@typescript-error%2Fcore)
 [![main](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml/badge.svg)](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml)
-# @typescript-error/core ☄
+# @typescript-error/core ⛱
 
 This is a library, which provides an abstract error class, which can be extended by specific implementations.
-It also defines a base error options schema, which can be extended pretty easy 🔥.
+It also defines a base error options schema, which can be extended pretty easy ⚡.
 
 **Table of Contents**
 
