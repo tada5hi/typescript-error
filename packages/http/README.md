@@ -44,9 +44,12 @@ console.log(clientError.getOption('code'));
 
 // ------------------------------------
 
-const serverError = new InternalServerError({
-    logLevel: 'warning'
-});
+const serverError = new InternalServerError(
+    undefined,
+    {
+        logLevel: 'warning'
+    }
+);
 
 console.log(serverError.getOption('statusCode'));
 // 500
