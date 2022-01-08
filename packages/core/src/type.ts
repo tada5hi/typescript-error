@@ -3,6 +3,11 @@ export type ErrorOptions = {
      * The error code is either a short uppercase string identifier for the error or a numeric error code. For example: SERVER_ERROR
      */
     code?: string | number,
+
+    /**
+     * The error message itself.
+     */
+    message?: string,
     /**
      * Mark this error as error which need to be logged.
      */

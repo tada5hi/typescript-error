@@ -46,11 +46,7 @@ export function setUnsetErrorOptions(
     const keys = Object.keys(options);
 
     for (let i = 0; i < keys.length; i++) {
-        if (
-            !Object.prototype.hasOwnProperty.call(base, keys[i]) ||
-            base[keys[i]] === null ||
-            typeof base[keys[i]] === 'undefined'
-        ) {
+        if (!Object.prototype.hasOwnProperty.call(base, keys[i])) {
             base[keys[i]] = options[keys[i]];
         }
     }
@@ -68,10 +64,7 @@ export function buildErrorOptions(
         !(data instanceof Error) &&
         typeof data !== 'string'
     ) {
-        options = {
-            ...options,
-            ...data,
-        };
+        options = mergeErrorOptions(options, data);
     }
 
     if (

@@ -32,10 +32,15 @@
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "scripts": {
-        "build": "rimraf ./dist && tsc -p tsconfig.build.json"
+        "build": "rimraf ./dist && tsc -p tsconfig.build.json",
+        "test": "cross-env NODE_ENV=test jest --config ./test/jest.config.js",
+        "test:coverage": "cross-env NODE_ENV=test jest --config ./test/jest.config.js --coverage"
     },
     "devDependencies": {
-        "rimraf": "^3.0.2"
+        "@types/jest": "^27.4.0",
+        "rimraf": "^3.0.2",
+        "jest": "^27.4.6",
+        "ts-jest": "^27.1.2"
     },
     "publishConfig": {
         "access": "public"

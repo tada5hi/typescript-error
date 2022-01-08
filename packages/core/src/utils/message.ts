@@ -21,6 +21,13 @@ export function determineErrorMessage(
 
     if (
         !message &&
+        options.message
+    ) {
+        message = options.message;
+    }
+
+    if (
+        !message &&
         !options.decorateMessage
     ) {
         if (data instanceof Error) {

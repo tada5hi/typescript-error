@@ -58,4 +58,10 @@ export class BaseError extends Error {
     public setOption<T extends keyof ErrorOptions>(key: T, value: ErrorOptions[T]) {
         Object.assign(this.options, { [key]: value });
     }
+
+    public unsetOption<T extends keyof ErrorOptions>(key: T) {
+        if (Object.prototype.hasOwnProperty.call(this.options, key)) {
+            delete this.options[key];
+        }
+    }
 }
