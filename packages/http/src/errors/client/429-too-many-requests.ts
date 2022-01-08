@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class TooManyRequestsError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `TOO_MANY_REQUESTS`,
                 statusCode: 429,

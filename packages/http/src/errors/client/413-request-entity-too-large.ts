@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class RequestEntityTooLargeError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `REQUEST_ENTITY_TOO_LARGE`,
                 statusCode: 413,

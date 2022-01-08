@@ -9,7 +9,7 @@ import { {{baseClass}} } from '../base';
 export class {{{class}}} extends {{baseClass}} {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `{{code}}`,
                 statusCode: {{statusCode}},

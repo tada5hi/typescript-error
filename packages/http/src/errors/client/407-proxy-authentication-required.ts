@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class ProxyAuthenticationRequiredError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `PROXY_AUTHENTICATION_REQUIRED`,
                 statusCode: 407,

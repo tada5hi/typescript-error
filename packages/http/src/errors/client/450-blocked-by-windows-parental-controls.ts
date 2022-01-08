@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class BlockedByWindowsParentalControlsError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `BLOCKED_BY_WINDOWS_PARENTAL_CONTROLS`,
                 statusCode: 450,

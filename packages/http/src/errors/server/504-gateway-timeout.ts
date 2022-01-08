@@ -9,7 +9,7 @@ import { ServerError } from '../base';
 export class GatewayTimeoutError extends ServerError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `GATEWAY_TIMEOUT`,
                 statusCode: 504,

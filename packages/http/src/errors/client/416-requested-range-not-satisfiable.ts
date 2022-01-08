@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class RequestedRangeNotSatisfiableError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `REQUESTED_RANGE_NOT_SATISFIABLE`,
                 statusCode: 416,

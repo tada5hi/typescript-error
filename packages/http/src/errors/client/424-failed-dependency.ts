@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class FailedDependencyError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `FAILED_DEPENDENCY`,
                 statusCode: 424,

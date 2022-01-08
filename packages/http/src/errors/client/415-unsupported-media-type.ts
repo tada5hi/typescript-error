@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class UnsupportedMediaTypeError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `UNSUPPORTED_MEDIA_TYPE`,
                 statusCode: 415,

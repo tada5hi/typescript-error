@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class ImATeapotError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `IM_A_TEAPOT`,
                 statusCode: 418,

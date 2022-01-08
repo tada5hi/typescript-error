@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class ExpectationFailedError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `EXPECTATION_FAILED`,
                 statusCode: 417,

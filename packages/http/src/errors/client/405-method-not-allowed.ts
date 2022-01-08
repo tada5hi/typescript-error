@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class MethodNotAllowedError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `METHOD_NOT_ALLOWED`,
                 statusCode: 405,

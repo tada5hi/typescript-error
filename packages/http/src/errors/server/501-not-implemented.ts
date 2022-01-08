@@ -9,7 +9,7 @@ import { ServerError } from '../base';
 export class NotImplementedError extends ServerError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `NOT_IMPLEMENTED`,
                 statusCode: 501,

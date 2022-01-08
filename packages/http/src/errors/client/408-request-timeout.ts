@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class RequestTimeoutError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `REQUEST_TIMEOUT`,
                 statusCode: 408,

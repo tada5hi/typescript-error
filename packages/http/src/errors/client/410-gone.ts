@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class GoneError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `GONE`,
                 statusCode: 410,

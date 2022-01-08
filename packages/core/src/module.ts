@@ -10,7 +10,7 @@ export class BaseError extends Error {
         data?: string | Error | ErrorOptions,
         options?: ErrorOptions,
     ) {
-        options = buildErrorOptions(options, options);
+        options = buildErrorOptions(data, options);
         const message = determineErrorMessage(data, options);
 
         super(message);

@@ -9,7 +9,7 @@ import { ServerError } from '../base';
 export class BadGatewayError extends ServerError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `BAD_GATEWAY`,
                 statusCode: 502,

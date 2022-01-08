@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class BadRequestError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `BAD_REQUEST`,
                 statusCode: 400,

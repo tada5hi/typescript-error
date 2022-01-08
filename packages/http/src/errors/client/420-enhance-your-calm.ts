@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class EnhanceYourCalmError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `ENHANCE_YOUR_CALM`,
                 statusCode: 420,

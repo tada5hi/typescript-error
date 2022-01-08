@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class ClientClosedRequestError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `CLIENT_CLOSED_REQUEST`,
                 statusCode: 499,

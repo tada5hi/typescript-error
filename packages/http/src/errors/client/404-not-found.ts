@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class NotFoundError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `NOT_FOUND`,
                 statusCode: 404,

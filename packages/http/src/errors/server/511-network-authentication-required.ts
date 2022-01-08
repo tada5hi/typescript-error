@@ -9,7 +9,7 @@ import { ServerError } from '../base';
 export class NetworkAuthenticationRequiredError extends ServerError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `NETWORK_AUTHENTICATION_REQUIRED`,
                 statusCode: 511,

@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class PreconditionFailedError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `PRECONDITION_FAILED`,
                 statusCode: 412,

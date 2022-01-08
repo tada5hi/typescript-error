@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class UnprocessableEntityError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `UNPROCESSABLE_ENTITY`,
                 statusCode: 422,

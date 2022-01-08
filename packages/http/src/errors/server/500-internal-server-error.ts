@@ -9,7 +9,7 @@ import { ServerError } from '../base';
 export class InternalServerError extends ServerError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `INTERNAL_SERVER_ERROR`,
                 statusCode: 500,

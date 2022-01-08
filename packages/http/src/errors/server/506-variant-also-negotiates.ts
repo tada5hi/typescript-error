@@ -9,7 +9,7 @@ import { ServerError } from '../base';
 export class VariantAlsoNegotiatesError extends ServerError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `VARIANT_ALSO_NEGOTIATES`,
                 statusCode: 506,

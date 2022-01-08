@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class RequestHeaderFieldsTooLargeError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `REQUEST_HEADER_FIELDS_TOO_LARGE`,
                 statusCode: 431,

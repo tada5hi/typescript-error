@@ -9,7 +9,7 @@ import { ClientError } from '../base';
 export class PreconditionRequiredError extends ClientError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `PRECONDITION_REQUIRED`,
                 statusCode: 428,

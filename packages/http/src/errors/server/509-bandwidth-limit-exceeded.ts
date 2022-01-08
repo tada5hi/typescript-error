@@ -9,7 +9,7 @@ import { ServerError } from '../base';
 export class BandwidthLimitExceededError extends ServerError {
     constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
         options = setUnsetErrorOptions(
-            buildErrorOptions(options, options),
+            buildErrorOptions(data, options),
             {
                 code: `BANDWIDTH_LIMIT_EXCEEDED`,
                 statusCode: 509,
