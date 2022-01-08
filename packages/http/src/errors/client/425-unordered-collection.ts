@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class UnorderedCollectionError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'UNORDERED_COLLECTION';
+        options.code = options.code ?? `UNORDERED_COLLECTION`;
         options.statusCode = options.statusCode ?? 425;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class UnorderedCollectionError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Unordered Collection';
+                message = `Unordered Collection`;
             }
         }
 

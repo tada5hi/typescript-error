@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class NotFoundError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'NOT_FOUND';
+        options.code = options.code ?? `NOT_FOUND`;
         options.statusCode = options.statusCode ?? 404;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class NotFoundError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Not Found';
+                message = `Not Found`;
             }
         }
 

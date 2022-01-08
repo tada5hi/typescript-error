@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class BlockedByWindowsParentalControlsError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'BLOCKED_BY_WINDOWS_PARENTAL_CONTROLS';
+        options.code = options.code ?? `BLOCKED_BY_WINDOWS_PARENTAL_CONTROLS`;
         options.statusCode = options.statusCode ?? 450;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class BlockedByWindowsParentalControlsError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Blocked By Windows Parental Controls';
+                message = `Blocked By Windows Parental Controls`;
             }
         }
 

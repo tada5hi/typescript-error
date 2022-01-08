@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class ExpectationFailedError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'EXPECTATION_FAILED';
+        options.code = options.code ?? `EXPECTATION_FAILED`;
         options.statusCode = options.statusCode ?? 417;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class ExpectationFailedError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Expectation Failed';
+                message = `Expectation Failed`;
             }
         }
 

@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class ProxyAuthenticationRequiredError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'PROXY_AUTHENTICATION_REQUIRED';
+        options.code = options.code ?? `PROXY_AUTHENTICATION_REQUIRED`;
         options.statusCode = options.statusCode ?? 407;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class ProxyAuthenticationRequiredError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Proxy Authentication Required';
+                message = `Proxy Authentication Required`;
             }
         }
 

@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class NotAcceptableError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'NOT_ACCEPTABLE';
+        options.code = options.code ?? `NOT_ACCEPTABLE`;
         options.statusCode = options.statusCode ?? 406;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class NotAcceptableError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Not Acceptable';
+                message = `Not Acceptable`;
             }
         }
 

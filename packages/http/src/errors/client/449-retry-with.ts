@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class RetryWithError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'RETRY_WITH';
+        options.code = options.code ?? `RETRY_WITH`;
         options.statusCode = options.statusCode ?? 449;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class RetryWithError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Retry With';
+                message = `Retry With`;
             }
         }
 

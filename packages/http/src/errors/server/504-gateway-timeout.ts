@@ -4,7 +4,7 @@ import { ServerError } from '../base';
 export class GatewayTimeoutError extends ServerError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'GATEWAY_TIMEOUT';
+        options.code = options.code ?? `GATEWAY_TIMEOUT`;
         options.statusCode = options.statusCode ?? 504;
         options.decorateMessage = options.decorateMessage ?? true;
         options.logMessage = options.logMessage ?? true;
@@ -17,7 +17,7 @@ export class GatewayTimeoutError extends ServerError {
             ) {
                 message = data.message;
             } else {
-                message = 'Gateway Timeout';
+                message = `Gateway Timeout`;
             }
         }
 

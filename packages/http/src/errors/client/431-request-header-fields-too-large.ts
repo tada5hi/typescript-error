@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class RequestHeaderFieldsTooLargeError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'REQUEST_HEADER_FIELDS_TOO_LARGE';
+        options.code = options.code ?? `REQUEST_HEADER_FIELDS_TOO_LARGE`;
         options.statusCode = options.statusCode ?? 431;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class RequestHeaderFieldsTooLargeError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Request Header Fields Too Large';
+                message = `Request Header Fields Too Large`;
             }
         }
 

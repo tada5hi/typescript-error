@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class LengthRequiredError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'LENGTH_REQUIRED';
+        options.code = options.code ?? `LENGTH_REQUIRED`;
         options.statusCode = options.statusCode ?? 411;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class LengthRequiredError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Length Required';
+                message = `Length Required`;
             }
         }
 

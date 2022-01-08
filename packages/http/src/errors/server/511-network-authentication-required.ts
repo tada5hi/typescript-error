@@ -4,7 +4,7 @@ import { ServerError } from '../base';
 export class NetworkAuthenticationRequiredError extends ServerError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'NETWORK_AUTHENTICATION_REQUIRED';
+        options.code = options.code ?? `NETWORK_AUTHENTICATION_REQUIRED`;
         options.statusCode = options.statusCode ?? 511;
         options.decorateMessage = options.decorateMessage ?? true;
         options.logMessage = options.logMessage ?? true;
@@ -17,7 +17,7 @@ export class NetworkAuthenticationRequiredError extends ServerError {
             ) {
                 message = data.message;
             } else {
-                message = 'Network Authentication Required';
+                message = `Network Authentication Required`;
             }
         }
 

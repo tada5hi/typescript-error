@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class ForbiddenError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'FORBIDDEN';
+        options.code = options.code ?? `FORBIDDEN`;
         options.statusCode = options.statusCode ?? 403;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class ForbiddenError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Forbidden';
+                message = `Forbidden`;
             }
         }
 

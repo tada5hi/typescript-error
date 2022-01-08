@@ -5,7 +5,12 @@
     "parserOptions": {
         "project": "./tsconfig.json"
     },
-    "ignorePatterns": ["**/dist/*", "**/*.d.ts"],
+    "ignorePatterns": [
+        "**/dist/*",
+        "**/*.d.ts",
+        "**/errors/client/**",
+        "**/errors/server/**"
+    ],
     "globals": {
         "NodeJS": true
     },

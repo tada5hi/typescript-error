@@ -4,7 +4,7 @@ import { ServerError } from '../base';
 export class InsufficientStorageError extends ServerError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'INSUFFICIENT_STORAGE';
+        options.code = options.code ?? `INSUFFICIENT_STORAGE`;
         options.statusCode = options.statusCode ?? 507;
         options.decorateMessage = options.decorateMessage ?? true;
         options.logMessage = options.logMessage ?? true;
@@ -17,7 +17,7 @@ export class InsufficientStorageError extends ServerError {
             ) {
                 message = data.message;
             } else {
-                message = 'Insufficient Storage';
+                message = `Insufficient Storage`;
             }
         }
 

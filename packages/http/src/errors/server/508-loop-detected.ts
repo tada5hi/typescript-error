@@ -4,7 +4,7 @@ import { ServerError } from '../base';
 export class LoopDetectedError extends ServerError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'LOOP_DETECTED';
+        options.code = options.code ?? `LOOP_DETECTED`;
         options.statusCode = options.statusCode ?? 508;
         options.decorateMessage = options.decorateMessage ?? true;
         options.logMessage = options.logMessage ?? true;
@@ -17,7 +17,7 @@ export class LoopDetectedError extends ServerError {
             ) {
                 message = data.message;
             } else {
-                message = 'Loop Detected';
+                message = `Loop Detected`;
             }
         }
 

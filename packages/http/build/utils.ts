@@ -22,7 +22,9 @@ export async function saveFile(content: string, filePath: string): Promise<void>
  * @param file
  */
 export async function loadTemplate(file: string): Promise<string> {
-    const tplPath: string = path.isAbsolute(file) ? file : path.join(__dirname, '/../../template/', file);
+    const tplPath: string = path.isAbsolute(file) ?
+        file :
+        path.join(__dirname, '..', 'template', file);
 
     return new Promise((resolve: (data: string) => void, reject) => {
         fs.readFile(tplPath, ({ encoding: 'utf-8' }), (err: Error, data: string) => {

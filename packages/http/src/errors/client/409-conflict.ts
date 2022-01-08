@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class ConflictError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'CONFLICT';
+        options.code = options.code ?? `CONFLICT`;
         options.statusCode = options.statusCode ?? 409;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class ConflictError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Conflict';
+                message = `Conflict`;
             }
         }
 

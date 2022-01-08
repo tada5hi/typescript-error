@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class RequestedRangeNotSatisfiableError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'REQUESTED_RANGE_NOT_SATISFIABLE';
+        options.code = options.code ?? `REQUESTED_RANGE_NOT_SATISFIABLE`;
         options.statusCode = options.statusCode ?? 416;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class RequestedRangeNotSatisfiableError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Requested Range Not Satisfiable';
+                message = `Requested Range Not Satisfiable`;
             }
         }
 

@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class ClientClosedRequestError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'CLIENT_CLOSED_REQUEST';
+        options.code = options.code ?? `CLIENT_CLOSED_REQUEST`;
         options.statusCode = options.statusCode ?? 499;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class ClientClosedRequestError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Client Closed Request';
+                message = `Client Closed Request`;
             }
         }
 

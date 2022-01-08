@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class UnprocessableEntityError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'UNPROCESSABLE_ENTITY';
+        options.code = options.code ?? `UNPROCESSABLE_ENTITY`;
         options.statusCode = options.statusCode ?? 422;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class UnprocessableEntityError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Unprocessable Entity';
+                message = `Unprocessable Entity`;
             }
         }
 

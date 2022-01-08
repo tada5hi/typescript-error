@@ -7,11 +7,11 @@ export class {{{class}}} extends {{baseClass}} {
         options.code = options.code ?? `{{code}}`;
         options.statusCode = options.statusCode ?? {{statusCode}};
         options.decorateMessage = options.decorateMessage ?? {{{decorateMessage}}};
-        options.logMessage = options.logMessage ?? {{{logMessage}}}
+        options.logMessage = options.logMessage ?? {{{logMessage}}};
 
         let message : string | undefined = typeof data === 'string' ? data : undefined;
-        if(!message) {
-            if(
+        if (!message) {
+            if (
                 data instanceof Error &&
                 !options.decorateMessage
             ) {
@@ -21,7 +21,7 @@ export class {{{class}}} extends {{baseClass}} {
             }
         }
 
-        if(
+        if (
             !options.previous &&
             data instanceof Error
         ) {

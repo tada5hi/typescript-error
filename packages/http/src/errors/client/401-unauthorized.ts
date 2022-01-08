@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class UnauthorizedError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'UNAUTHORIZED';
+        options.code = options.code ?? `UNAUTHORIZED`;
         options.statusCode = options.statusCode ?? 401;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class UnauthorizedError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Unauthorized';
+                message = `Unauthorized`;
             }
         }
 

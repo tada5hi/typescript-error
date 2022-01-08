@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class PreconditionRequiredError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'PRECONDITION_REQUIRED';
+        options.code = options.code ?? `PRECONDITION_REQUIRED`;
         options.statusCode = options.statusCode ?? 428;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class PreconditionRequiredError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Precondition Required';
+                message = `Precondition Required`;
             }
         }
 

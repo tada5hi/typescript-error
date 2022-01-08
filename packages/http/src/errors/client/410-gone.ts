@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class GoneError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'GONE';
+        options.code = options.code ?? `GONE`;
         options.statusCode = options.statusCode ?? 410;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class GoneError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Gone';
+                message = `Gone`;
             }
         }
 

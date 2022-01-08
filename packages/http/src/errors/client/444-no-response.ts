@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class NoResponseError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'NO_RESPONSE';
+        options.code = options.code ?? `NO_RESPONSE`;
         options.statusCode = options.statusCode ?? 444;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class NoResponseError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'No Response';
+                message = `No Response`;
             }
         }
 

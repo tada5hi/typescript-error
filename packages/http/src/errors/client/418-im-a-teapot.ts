@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class ImATeapotError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'IM_A_TEAPOT';
+        options.code = options.code ?? `IM_A_TEAPOT`;
         options.statusCode = options.statusCode ?? 418;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class ImATeapotError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'I\'m a Teapot';
+                message = `I'm a Teapot`;
             }
         }
 

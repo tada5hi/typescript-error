@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class MethodNotAllowedError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'METHOD_NOT_ALLOWED';
+        options.code = options.code ?? `METHOD_NOT_ALLOWED`;
         options.statusCode = options.statusCode ?? 405;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class MethodNotAllowedError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Method Not Allowed';
+                message = `Method Not Allowed`;
             }
         }
 

@@ -4,7 +4,7 @@ import { ServerError } from '../base';
 export class BadGatewayError extends ServerError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'BAD_GATEWAY';
+        options.code = options.code ?? `BAD_GATEWAY`;
         options.statusCode = options.statusCode ?? 502;
         options.decorateMessage = options.decorateMessage ?? true;
         options.logMessage = options.logMessage ?? true;
@@ -17,7 +17,7 @@ export class BadGatewayError extends ServerError {
             ) {
                 message = data.message;
             } else {
-                message = 'Bad Gateway';
+                message = `Bad Gateway`;
             }
         }
 

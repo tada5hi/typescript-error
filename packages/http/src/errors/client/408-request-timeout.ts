@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class RequestTimeoutError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'REQUEST_TIMEOUT';
+        options.code = options.code ?? `REQUEST_TIMEOUT`;
         options.statusCode = options.statusCode ?? 408;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class RequestTimeoutError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Request Timeout';
+                message = `Request Timeout`;
             }
         }
 

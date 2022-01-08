@@ -4,7 +4,7 @@ import { ClientError } from '../base';
 export class UnsupportedMediaTypeError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? 'UNSUPPORTED_MEDIA_TYPE';
+        options.code = options.code ?? `UNSUPPORTED_MEDIA_TYPE`;
         options.statusCode = options.statusCode ?? 415;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false;
@@ -17,7 +17,7 @@ export class UnsupportedMediaTypeError extends ClientError {
             ) {
                 message = data.message;
             } else {
-                message = 'Unsupported Media Type';
+                message = `Unsupported Media Type`;
             }
         }
 
