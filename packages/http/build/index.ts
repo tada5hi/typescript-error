@@ -57,7 +57,7 @@ import { hasOwnProperty, loadTemplate, saveFile } from './utils';
 
     // default
     const lines : string[] = [
-        'export * from "./base";',
+        'export * from \'./base\';',
     ];
 
     items.map((item) => {
@@ -65,10 +65,13 @@ import { hasOwnProperty, loadTemplate, saveFile } from './utils';
         parts.pop();
 
         const relativeDirectory : string = item.isServerError ? 'server' : 'client';
-        lines.push(`export * from "./${relativeDirectory}/${parts.join('.')}";`);
+        lines.push(`export * from './${relativeDirectory}/${parts.join('.')}';`);
 
         return item;
     });
+
+    // eof ;)
+    lines.push('');
 
     const content : string = lines.join('\n');
 
