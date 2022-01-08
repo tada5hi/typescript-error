@@ -11,10 +11,11 @@ export class BaseError extends Error {
         let message : string | undefined;
 
         if (
-            data instanceof Error &&
-            !options.previous
+            data instanceof Error
         ) {
-            options.previous = data;
+            if(!options.previous) {
+                options.previous = data;
+            }
         } else if(
             typeof data === 'string'
         ) {
@@ -22,8 +23,19 @@ export class BaseError extends Error {
         } else {
             options = {
                 ...options,
-                ...data
+                ...(typeof data === 'object' ? data : {})
             };
+        }
+
+        if (
+            !message &&
+            !options.decorateMessage
+        ) {
+            if (data instanceof Error) {
+                message = data.message;
+            } else if (options.previous instanceof Error) {
+                message = options.previous.message;
+            }
         }
 
         super(message);
