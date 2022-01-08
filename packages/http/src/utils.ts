@@ -1,4 +1,4 @@
-import {ClientError, ServerError} from "./errors";
+import { ClientError, ServerError } from './errors';
 
 export function isClientError<T extends ClientError>(error: unknown) : error is T {
     return error instanceof ClientError;

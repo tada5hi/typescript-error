@@ -1,27 +1,27 @@
-import { ErrorOptions } from "@typescript-error/core";
-import { ServerError } from "../base";
+import { ErrorOptions } from '@typescript-error/core';
+import { ServerError } from '../base';
 
 export class ServiceUnavailableError extends ServerError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? `SERVICE_UNAVAILABLE`;
+        options.code = options.code ?? 'SERVICE_UNAVAILABLE';
         options.statusCode = options.statusCode ?? 503;
         options.decorateMessage = options.decorateMessage ?? true;
-        options.logMessage = options.logMessage ?? true
+        options.logMessage = options.logMessage ?? true;
 
         let message : string | undefined = typeof data === 'string' ? data : undefined;
-        if(!message) {
-            if(
+        if (!message) {
+            if (
                 data instanceof Error &&
                 !options.decorateMessage
             ) {
                 message = data.message;
             } else {
-                message = `Service Unavailable`;
+                message = 'Service Unavailable';
             }
         }
 
-        if(
+        if (
             !options.previous &&
             data instanceof Error
         ) {

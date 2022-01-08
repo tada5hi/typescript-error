@@ -3,7 +3,7 @@ import ServerErrorSettings from './server.json';
 
 export {
     ClientErrorSettings,
-    ServerErrorSettings
-}
+    ServerErrorSettings,
+};
 
 export * from './type';

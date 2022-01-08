@@ -1,27 +1,27 @@
-import { ErrorOptions } from "@typescript-error/core";
-import { ClientError } from "../base";
+import { ErrorOptions } from '@typescript-error/core';
+import { ClientError } from '../base';
 
 export class RequestTimeoutError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? `REQUEST_TIMEOUT`;
+        options.code = options.code ?? 'REQUEST_TIMEOUT';
         options.statusCode = options.statusCode ?? 408;
         options.decorateMessage = options.decorateMessage ?? false;
-        options.logMessage = options.logMessage ?? false
+        options.logMessage = options.logMessage ?? false;
 
         let message : string | undefined = typeof data === 'string' ? data : undefined;
-        if(!message) {
-            if(
+        if (!message) {
+            if (
                 data instanceof Error &&
                 !options.decorateMessage
             ) {
                 message = data.message;
             } else {
-                message = `Request Timeout`;
+                message = 'Request Timeout';
             }
         }
 
-        if(
+        if (
             !options.previous &&
             data instanceof Error
         ) {

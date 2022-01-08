@@ -34,4 +34,4 @@ export type ErrorOptions = {
      * Permit additional properties
      */
     [key: string]: any
-}
+};

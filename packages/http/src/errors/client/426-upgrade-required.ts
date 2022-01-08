@@ -1,27 +1,27 @@
-import { ErrorOptions } from "@typescript-error/core";
-import { ClientError } from "../base";
+import { ErrorOptions } from '@typescript-error/core';
+import { ClientError } from '../base';
 
 export class UpgradeRequiredError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? `UPGRADE_REQUIRED`;
+        options.code = options.code ?? 'UPGRADE_REQUIRED';
         options.statusCode = options.statusCode ?? 426;
         options.decorateMessage = options.decorateMessage ?? false;
-        options.logMessage = options.logMessage ?? false
+        options.logMessage = options.logMessage ?? false;
 
         let message : string | undefined = typeof data === 'string' ? data : undefined;
-        if(!message) {
-            if(
+        if (!message) {
+            if (
                 data instanceof Error &&
                 !options.decorateMessage
             ) {
                 message = data.message;
             } else {
-                message = `Upgrade Required`;
+                message = 'Upgrade Required';
             }
         }
 
-        if(
+        if (
             !options.previous &&
             data instanceof Error
         ) {

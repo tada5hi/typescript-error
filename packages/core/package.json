@@ -1,6 +1,9 @@
 {
     "name": "@typescript-error/core",
     "version": "1.0.3",
+    "files": [
+        "dist/"
+    ],
     "description": "",
     "author": {
         "name": "Peter Placzek",

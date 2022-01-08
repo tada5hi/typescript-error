@@ -1,11 +1,11 @@
 import {
     BaseError,
     ErrorOptions,
-    mergeErrorOptions
-} from "@typescript-error/core";
+    mergeErrorOptions,
+} from '@typescript-error/core';
 
 export {
     BaseError,
     ErrorOptions,
-    mergeErrorOptions
-}
+    mergeErrorOptions,
+};

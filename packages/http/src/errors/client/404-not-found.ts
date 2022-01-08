@@ -1,27 +1,27 @@
-import { ErrorOptions } from "@typescript-error/core";
-import { ClientError } from "../base";
+import { ErrorOptions } from '@typescript-error/core';
+import { ClientError } from '../base';
 
 export class NotFoundError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? `NOT_FOUND`;
+        options.code = options.code ?? 'NOT_FOUND';
         options.statusCode = options.statusCode ?? 404;
         options.decorateMessage = options.decorateMessage ?? false;
-        options.logMessage = options.logMessage ?? false
+        options.logMessage = options.logMessage ?? false;
 
         let message : string | undefined = typeof data === 'string' ? data : undefined;
-        if(!message) {
-            if(
+        if (!message) {
+            if (
                 data instanceof Error &&
                 !options.decorateMessage
             ) {
                 message = data.message;
             } else {
-                message = `Not Found`;
+                message = 'Not Found';
             }
         }
 
-        if(
+        if (
             !options.previous &&
             data instanceof Error
         ) {

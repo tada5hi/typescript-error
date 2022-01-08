@@ -2,6 +2,9 @@
     "name": "@typescript-error/http",
     "version": "1.0.3",
     "description": "",
+    "files": [
+        "dist/"
+    ],
     "author": {
         "name": "Peter Placzek",
         "email": "contact@tada5hi.net",
@@ -31,7 +34,7 @@
     "typings": "dist/index.d.ts",
     "scripts": {
         "build": "rimraf ./dist && tsc -p tsconfig.build.json",
-        "generate": "ts-node src/cli/index.ts generate"
+        "generate": "ts-node build/index.ts generate"
     },
     "dependencies": {
         "@typescript-error/core": "^1.0.3"

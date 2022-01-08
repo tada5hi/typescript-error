@@ -5,7 +5,7 @@
  * view the LICENSE file that was distributed with this source code.
  */
 
-import {ErrorOptions} from "../type";
+import { ErrorOptions } from '../type';
 
 function isObject(item) {
     return (item && typeof item === 'object' && !Array.isArray(item));

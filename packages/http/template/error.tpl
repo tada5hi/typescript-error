@@ -1,5 +1,5 @@
-import { ErrorOptions } from "@typescript-error/core";
-import { {{baseClass}} } from "../base";
+import { ErrorOptions } from '@typescript-error/core';
+import { {{baseClass}} } from '../base';
 
 export class {{{class}}} extends {{baseClass}} {
     constructor(data?: string | Error, options?: ErrorOptions) {

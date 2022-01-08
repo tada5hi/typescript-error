@@ -1,27 +1,27 @@
-import { ErrorOptions } from "@typescript-error/core";
-import { ClientError } from "../base";
+import { ErrorOptions } from '@typescript-error/core';
+import { ClientError } from '../base';
 
 export class MethodNotAllowedError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
-        options.code = options.code ?? `METHOD_NOT_ALLOWED`;
+        options.code = options.code ?? 'METHOD_NOT_ALLOWED';
         options.statusCode = options.statusCode ?? 405;
         options.decorateMessage = options.decorateMessage ?? false;
-        options.logMessage = options.logMessage ?? false
+        options.logMessage = options.logMessage ?? false;
 
         let message : string | undefined = typeof data === 'string' ? data : undefined;
-        if(!message) {
-            if(
+        if (!message) {
+            if (
                 data instanceof Error &&
                 !options.decorateMessage
             ) {
                 message = data.message;
             } else {
-                message = `Method Not Allowed`;
+                message = 'Method Not Allowed';
             }
         }
 
-        if(
+        if (
             !options.previous &&
             data instanceof Error
         ) {
