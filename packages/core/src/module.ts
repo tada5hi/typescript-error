@@ -1,42 +1,17 @@
 import { ErrorOptions } from './type';
+import { buildErrorOptions, determineErrorMessage } from './utils';
 
 export class BaseError extends Error {
     public readonly options: ErrorOptions;
 
     //--------------------------------------------------------------------
 
-    constructor(data?: string | Error, options?: ErrorOptions) {
-        options = options ?? {};
-
-        let message : string | undefined;
-
-        if (
-            data instanceof Error
-        ) {
-            if (!options.previous) {
-                options.previous = data;
-            }
-        } else if (
-            typeof data === 'string'
-        ) {
-            message = data;
-        } else {
-            options = {
-                ...options,
-                ...(typeof data === 'object' ? data : {}),
-            };
-        }
-
-        if (
-            !message &&
-            !options.decorateMessage
-        ) {
-            if (data instanceof Error) {
-                message = data.message;
-            } else if (options.previous instanceof Error) {
-                message = options.previous.message;
-            }
-        }
+    constructor(
+        data?: string | Error | ErrorOptions,
+        options?: ErrorOptions,
+    ) {
+        options = buildErrorOptions(options, options);
+        const message = determineErrorMessage(data, options);
 
         super(message);
 
@@ -74,9 +49,9 @@ export class BaseError extends Error {
     setOptions(options?: ErrorOptions): void {
         options = options ?? {};
 
-        for (const k in options) {
-            const key: keyof ErrorOptions = k as keyof ErrorOptions;
-            this.setOption(key, options[key]);
+        const keys = Object.keys(options);
+        for (let i = 0; i < keys.length; i++) {
+            this.setOption(keys[i], options[keys[i]]);
         }
     }
 

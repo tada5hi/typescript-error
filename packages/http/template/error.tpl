@@ -1,31 +1,26 @@
-import { ErrorOptions } from '@typescript-error/core';
+import {
+    buildErrorOptions,
+    determineErrorMessage,
+    ErrorOptions,
+    setUnsetErrorOptions
+} from '@typescript-error/core';
 import { {{baseClass}} } from '../base';
 
 export class {{{class}}} extends {{baseClass}} {
-    constructor(data?: string | Error, options?: ErrorOptions) {
-        options = options ?? {};
-        options.code = options.code ?? `{{code}}`;
-        options.statusCode = options.statusCode ?? {{statusCode}};
-        options.decorateMessage = options.decorateMessage ?? {{{decorateMessage}}};
-        options.logMessage = options.logMessage ?? {{{logMessage}}};
+    constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
+        options = setUnsetErrorOptions(
+            buildErrorOptions(options, options),
+            {
+                code: `{{code}}`,
+                statusCode: {{statusCode}},
+                decorateMessage: {{{decorateMessage}}},
+                logMessage: {{{logMessage}}}
+            },
+        );
 
-        let message : string | undefined = typeof data === 'string' ? data : undefined;
+        let message = determineErrorMessage(data, options);
         if (!message) {
-            if (
-                data instanceof Error &&
-                !options.decorateMessage
-            ) {
-                message = data.message;
-            } else {
-                message = `{{{message}}}`;
-            }
-        }
-
-        if (
-            !options.previous &&
-            data instanceof Error
-        ) {
-            options.previous = data;
+            message = `{{{message}}}`;
         }
 
         super(message, options);

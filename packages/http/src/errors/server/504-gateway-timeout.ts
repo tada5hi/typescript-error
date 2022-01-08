@@ -1,31 +1,26 @@
-import { ErrorOptions } from '@typescript-error/core';
+import {
+    buildErrorOptions,
+    determineErrorMessage,
+    ErrorOptions,
+    setUnsetErrorOptions
+} from '@typescript-error/core';
 import { ServerError } from '../base';
 
 export class GatewayTimeoutError extends ServerError {
-    constructor(data?: string | Error, options?: ErrorOptions) {
-        options = options ?? {};
-        options.code = options.code ?? `GATEWAY_TIMEOUT`;
-        options.statusCode = options.statusCode ?? 504;
-        options.decorateMessage = options.decorateMessage ?? true;
-        options.logMessage = options.logMessage ?? true;
+    constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
+        options = setUnsetErrorOptions(
+            buildErrorOptions(options, options),
+            {
+                code: `GATEWAY_TIMEOUT`,
+                statusCode: 504,
+                decorateMessage: true,
+                logMessage: true
+            },
+        );
 
-        let message : string | undefined = typeof data === 'string' ? data : undefined;
+        let message = determineErrorMessage(data, options);
         if (!message) {
-            if (
-                data instanceof Error &&
-                !options.decorateMessage
-            ) {
-                message = data.message;
-            } else {
-                message = `Gateway Timeout`;
-            }
-        }
-
-        if (
-            !options.previous &&
-            data instanceof Error
-        ) {
-            options.previous = data;
+            message = `Gateway Timeout`;
         }
 
         super(message, options);

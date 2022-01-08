@@ -1,31 +1,26 @@
-import { ErrorOptions } from '@typescript-error/core';
+import {
+    buildErrorOptions,
+    determineErrorMessage,
+    ErrorOptions,
+    setUnsetErrorOptions
+} from '@typescript-error/core';
 import { ClientError } from '../base';
 
 export class ConflictError extends ClientError {
-    constructor(data?: string | Error, options?: ErrorOptions) {
-        options = options ?? {};
-        options.code = options.code ?? `CONFLICT`;
-        options.statusCode = options.statusCode ?? 409;
-        options.decorateMessage = options.decorateMessage ?? false;
-        options.logMessage = options.logMessage ?? false;
+    constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
+        options = setUnsetErrorOptions(
+            buildErrorOptions(options, options),
+            {
+                code: `CONFLICT`,
+                statusCode: 409,
+                decorateMessage: false,
+                logMessage: false
+            },
+        );
 
-        let message : string | undefined = typeof data === 'string' ? data : undefined;
+        let message = determineErrorMessage(data, options);
         if (!message) {
-            if (
-                data instanceof Error &&
-                !options.decorateMessage
-            ) {
-                message = data.message;
-            } else {
-                message = `Conflict`;
-            }
-        }
-
-        if (
-            !options.previous &&
-            data instanceof Error
-        ) {
-            options.previous = data;
+            message = `Conflict`;
         }
 
         super(message, options);

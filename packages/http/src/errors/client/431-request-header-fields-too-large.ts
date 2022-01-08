@@ -1,31 +1,26 @@
-import { ErrorOptions } from '@typescript-error/core';
+import {
+    buildErrorOptions,
+    determineErrorMessage,
+    ErrorOptions,
+    setUnsetErrorOptions
+} from '@typescript-error/core';
 import { ClientError } from '../base';
 
 export class RequestHeaderFieldsTooLargeError extends ClientError {
-    constructor(data?: string | Error, options?: ErrorOptions) {
-        options = options ?? {};
-        options.code = options.code ?? `REQUEST_HEADER_FIELDS_TOO_LARGE`;
-        options.statusCode = options.statusCode ?? 431;
-        options.decorateMessage = options.decorateMessage ?? false;
-        options.logMessage = options.logMessage ?? false;
+    constructor(data?: string | Error | ErrorOptions, options?: ErrorOptions) {
+        options = setUnsetErrorOptions(
+            buildErrorOptions(options, options),
+            {
+                code: `REQUEST_HEADER_FIELDS_TOO_LARGE`,
+                statusCode: 431,
+                decorateMessage: false,
+                logMessage: false
+            },
+        );
 
-        let message : string | undefined = typeof data === 'string' ? data : undefined;
+        let message = determineErrorMessage(data, options);
         if (!message) {
-            if (
-                data instanceof Error &&
-                !options.decorateMessage
-            ) {
-                message = data.message;
-            } else {
-                message = `Request Header Fields Too Large`;
-            }
-        }
-
-        if (
-            !options.previous &&
-            data instanceof Error
-        ) {
-            options.previous = data;
+            message = `Request Header Fields Too Large`;
         }
 
         super(message, options);
