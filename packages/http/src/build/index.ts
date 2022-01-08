@@ -3,6 +3,7 @@ import path from 'path';
 import {ClientErrorSettings, ServerErrorSettings} from "../config";
 import {ErrorSetting} from "../config";
 import {hasOwnProperty, loadTemplate, saveFile} from "./utils";
+import * as console from "console";
 
 /**
  * Generate client and server errors.
@@ -23,7 +24,7 @@ export async function generateErrors() : Promise<void> {
 
         const pathSuffix : string = isServerError ? 'server' : 'client';
 
-        const fileName : string = settings[key].statusCode + '-' + (settings[key].code).toLowerCase().replace('/_/g','-')+'.ts';
+        const fileName : string = settings[key].statusCode + '-' + (settings[key].code).toLowerCase().replace(/_/g,'-')+'.ts';
         const destFilePath : string = path.join(destDirPath, pathSuffix, fileName);
 
         let className : string = key;

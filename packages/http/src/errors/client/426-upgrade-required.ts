@@ -5,7 +5,7 @@ export class UpgradeRequiredError extends ClientError {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
         options.code = options.code ?? `UPGRADE_REQUIRED`;
-        options.statusCode = options.statusCode ?? 424;
+        options.statusCode = options.statusCode ?? 426;
         options.decorateMessage = options.decorateMessage ?? false;
         options.logMessage = options.logMessage ?? false
 

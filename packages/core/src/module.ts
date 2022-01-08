@@ -8,23 +8,22 @@ export class BaseError extends Error {
     constructor(data?: string | Error, options?: ErrorOptions) {
         options = options ?? {};
 
+        let message : string | undefined;
+
         if (
             data instanceof Error &&
             !options.previous
         ) {
             options.previous = data;
-        }
-
-        let message: string | undefined = typeof data === 'string' ? data : undefined;
-        if (
-            !message &&
-            !options.decorateMessage
+        } else if(
+            typeof data === 'string'
         ) {
-            if (data instanceof Error) {
-                message = data.message;
-            } else if (options.previous instanceof Error) {
-                message = options.previous.message;
-            }
+            message = data;
+        } else {
+            options = {
+                ...options,
+                ...data
+            };
         }
 
         super(message);
