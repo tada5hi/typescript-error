@@ -1,6 +1,6 @@
 {
     "name": "@typescript-error/http",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "",
     "files": [
         "dist/"
@@ -37,7 +37,7 @@
         "generate": "ts-node build/index.ts generate"
     },
     "dependencies": {
-        "@typescript-error/core": "^1.1.0"
+        "@typescript-error/core": "^1.1.1"
     },
     "devDependencies": {
         "@types/mustache": "^4.1.2",
