@@ -31,6 +31,7 @@ export function determineErrorMessage(
         !options.decorateMessage
     ) {
         if (data instanceof Error) {
+            /* istanbul ignore next */
             message = data.message;
         } else if (options.previous instanceof Error) {
             message = options.previous.message;

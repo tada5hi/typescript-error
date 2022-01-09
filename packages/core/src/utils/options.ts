@@ -28,7 +28,9 @@ export function mergeErrorOptions(
         const keys = Object.keys(source);
         for (let i = 0; i < keys.length; i++) {
             if (isObject(source[keys[i]])) {
+                /* istanbul ignore next */
                 if (!target[keys[i]]) Object.assign(target, { [keys[i]]: {} });
+                /* istanbul ignore next */
                 mergeErrorOptions(target[keys[i]], source[keys[i]]);
             } else {
                 Object.assign(target, { [keys[i]]: source[keys[i]] });

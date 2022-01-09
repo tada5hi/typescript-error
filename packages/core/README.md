@@ -1,6 +1,8 @@
+# @typescript-error/core ⛱
+
 [![npm version](https://badge.fury.io/js/@typescript-error%2Fcore.svg)](https://badge.fury.io/js/@typescript-error%2Fcore)
 [![main](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml/badge.svg)](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml)
-# @typescript-error/core ⛱
+[![codecov](https://codecov.io/gh/tada5hi/typescript-error/branch/master/graph/badge.svg?token=RFYI5CVQK4)](https://codecov.io/gh/tada5hi/typescript-error)
 
 This is a library, which provides a base error class, which can simply be extended ⚡.
 It also provides some utility functions to `build`, `merge` and `set un-set` options. 

@@ -26,7 +26,10 @@ export class BaseError extends Error {
 
         if (Error.captureStackTrace) {
             Error.captureStackTrace(this, this.constructor);
-        } else if (typeof this.stack === 'undefined' || this.stack === '') {
+        }
+
+        /* istanbul ignore next */
+        if (typeof this.stack === 'undefined' || this.stack === '') {
             this.stack = new Error(message).stack;
         }
 

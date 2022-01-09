@@ -1,9 +1,10 @@
-[![npm version](https://badge.fury.io/js/@typescript-error%2Fhttp.svg)](https://badge.fury.io/js/@typescript-error%2Fhttp)
-[![main](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml/badge.svg)](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml)
 # @typescript-error/http 🔥
 
-This is a library, which provides abstract http error classes (`NotFoundError`, `InternalServerError`, ...), 
-which can also be extended by specific implementations.
+[![npm version](https://badge.fury.io/js/@typescript-error%2Fhttp.svg)](https://badge.fury.io/js/@typescript-error%2Fhttp)
+[![main](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml/badge.svg)](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml)
+
+This is a library, which provides HTTP error classes (`NotFoundError`, `InternalServerError`, ...), 
+which can also simply be extended.
 
 **Table of Contents**
 
@@ -21,8 +22,8 @@ npm install @typescript-error/http --save
 
 ## Usage
 
-Just import one of the [client](#client) or [server](#server) error classes and use them
-directly in your code base.
+The usage is pretty easy, just import one of the [client](#client) or [server](#server) error classes and use them
+in `throw-` & `catch-` statements.
 
 **Basic**
 ```typescript
@@ -44,12 +45,9 @@ console.log(clientError.getOption('code'));
 
 // ------------------------------------
 
-const serverError = new InternalServerError(
-    undefined,
-    {
-        logLevel: 'warning'
-    }
-);
+const serverError = new InternalServerError({
+    logLevel: 'warning'
+});
 
 console.log(serverError.getOption('statusCode'));
 // 500
@@ -79,22 +77,20 @@ import {
 
 class UserNotFound extends NotFoundError {
     constructor(options?: ErrorOptions) {
-        super(
-            'The user was not found.', 
-            mergeErrorOptions(
-                {
-                    code: 'USER_NOT_FOUND'
-                },
-                ...(options ? options : {})
-            )
-        );
+        super(mergeErrorOptions(
+            {
+                message: 'The user was not found.',
+                code: 'USER_NOT_FOUND'
+            },
+            ...(options ? options : {})
+        ));
     }
 }
 ```
 
 ## Types
 
-The following abstract HTTP classes are defined:
+The following HTTP classes are predefined:
 
 ### Client
 

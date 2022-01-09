@@ -1,8 +1,10 @@
+# @typescript-error ⚡	
+
 [![main](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml/badge.svg)](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml)
 [![Known Vulnerabilities](https://snyk.io/test/github/Tada5hi/typescript-error/badge.svg)](https://snyk.io/test/github/Tada5hi/typescript-error)
 
-# @typescript-error ⚡	
-This monorepo contains error interfaces/classes in general and explicit implementations for http & websocket errors.
+This monorepo contains error interfaces/classes in general and some implementations for http & websocket errors.
+
 ## Packages
 The repository contains the following packages:
 
