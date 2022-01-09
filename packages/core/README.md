@@ -2,13 +2,16 @@
 [![main](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml/badge.svg)](https://github.com/Tada5hi/typescript-error/actions/workflows/main.yml)
 # @typescript-error/core ⛱
 
-This is a library, which provides an abstract error class, which can be extended by specific implementations.
-It also defines a base error options schema, which can be extended pretty easy ⚡.
+This is a library, which provides a base error class, which can simply be extended ⚡.
+It also provides some utility functions to `build`, `merge` and `set un-set` options. 
 
 **Table of Contents**
 
 - [Installation](#installation)
 - [Usage](#usage)
+    - [Simple](#simple)
+    - [Inheritance](#inheritance)
+    - [Utils](#utils)
 - [Types](#types)
 
 ## Installation
@@ -19,22 +22,45 @@ npm install @typescript-error/core --save
 
 ## Usage
 
-To use the `BaseError` class just import it.
+### Simple
+The `BaseError` class can be initialized on different ways, like demonstrated by the following examples:
+
+**Example #1**
+
+In this example no options are specified on class instantiation, but afterwards.
+```typescript
+import {BaseError} from "@typescript-error/core";
+
+const error = new BaseError('An error occurred.');
+
+console.log(error.message);
+// An error is occurred.
+
+console.log(error.getOptions());
+// {}
+
+error.setOption('statusCode', 404);
+
+console.log(error.getOptions());
+// {statusCode: 404}
+
+console.log(error.getOption('statusCode'));
+// 404
+```
+
+**Example #2**
+
+In the following example the error options are specified on instantiation.
 
 ```typescript
 import {BaseError, ErrorOptions} from "@typescript-error/core";
 
 const options : ErrorOptions = {
-    logMessage: true,
-    logLevel: 'warning',
-    code: 1,
     statusCode: 404,
     //... define some own options
     foo: 'bar'
 }
 const error = new BaseError('The entity could not be found', options);
-
-// access the option values
 
 const statusCode = error.getOption('statusCode');
 console.log(statusCode);
@@ -44,10 +70,38 @@ const foo = error.getOption('foo');
 console.log(foo);
 // bar
 ```
-Like demonstrated in the example above, predefined options keys can be set. In addition, own options,
-can also be defined ⚡.
+Like demonstrated in the example above, self defined options can be provided in addition to 
+the existing options keys ⚡.
 
-Another good practice is to hide common error options under an own definition.
+**Example #3**
+
+In the following example only the error options are passed as single argument to the error constructor.
+
+```typescript
+import {BaseError, ErrorOptions} from "@typescript-error/core";
+
+const options : ErrorOptions = {
+    message: 'The entity could not be found',
+    statusCode: 404,
+    //... define some own options
+    foo: 'bar'
+}
+const error = new BaseError(options);
+
+console.log(error.message);
+// The entity could not be found
+
+// access the option values
+const statusCode = error.getOption('statusCode');
+console.log(statusCode);
+// 404
+```
+
+
+### Inheritance
+
+Besides, using only the BaseError class, own classes which inherit the BaseError class,
+can simply be created and provide a better way to handle errors more differentiated.
 
 ```typescript
 import {
@@ -57,7 +111,7 @@ import {
 } from "@typescript-error/core";
 
 export class NotFoundError extends BaseError {
-    constructor(options?: ErrorOptions) {
+    constructor(message?: ErrorOptions) {
         super(mergeErrorOptions(
             {
                 logMessage: true,
@@ -71,19 +125,90 @@ export class NotFoundError extends BaseError {
 }
 ```
 
+### Utils
+
+The library is like already mentioned also shipped with some utility functions, to make life easier.
+
+#### buildErrorOptions
+The `buildErrorOptions` method requires two arguments. The first one can either be a `string`, `Error` or a
+value of type `ErrorOptions`. The second argument one, on the other hand must be of type `ErrorOptions`.
+
+```typescript
+import {buildErrorOptions} from "@typescript-error/core";
+
+let options = buildErrorOptions({
+    statusCode: 404
+}, {
+    error: 'ERROR'
+});
+console.log(options);
+// {statusCode: 404, code: 'ERROR'}
+
+options = buildErrorOptions('An error occurred.', {code: 'ERROR'});
+console.log(options);
+// {code: 'ERROR'}
+```
+
+#### mergeErrorOptions
+
+The `mergeErrorOptions` accepts 1-n arguments of type `ErrorOptions` and merge them to one option set,
+which is then provided as return value.
+
+```typescript
+import {mergeErrorOptions} from "@typescript-error/core";
+
+let options = mergeErrorOptions({
+    statusCode: 404
+}, {
+    error: 'ERROR'
+});
+console.log(options);
+// {statusCode: 404, code: 'ERROR'}
+
+options = mergeErrorOptions('An error occurred.', {code: 'ERROR'});
+console.log(options);
+// {code: 'ERROR'}
+```
+
+#### setUnsetErrorOptions
+The `setUnsetErrorOptions` method requires two arguments of type `ErrorOptions`.
+
+```typescript
+import {setUnsetErrorOptions} from "@typescript-error/core";
+
+let options = setUnsetErrorOptions({
+    statusCode: 404
+}, {
+    error: 'ERROR'
+});
+console.log(options);
+// {statusCode: 404, code: 'ERROR'}
+
+options = setUnsetErrorOptions({code: undefined}, {code: 'ERROR'});
+console.log(options);
+// {code: undefined}
+```
 ## Types
 
 ### ErrorOptions
 ```typescript
 export type ErrorOptions = {
     /**
-     * The error code is either a short uppercase string identifier for the error or a numeric error code. For example: SERVER_ERROR
+     * The error code is either a short uppercase string identifier 
+     * for the error or a numeric error code. For example: SERVER_ERROR
      */
     code?: string | number,
+
+    /**
+     * The actual error message, if not provided on another way.
+     */
+    message?: string,
+
     /**
      * Mark this error as error which need to be logged.
      */
     logMessage?: boolean,
+
     /**
      * Set the log level for this error.
      */
@@ -94,21 +219,24 @@ export type ErrorOptions = {
      * or already provide a decoration message.
      */
     decorateMessage?: boolean | string,
+
     /**
      * Specify a previous error.
      */
     previous?: Error,
+
     /**
      * In case of a http error provide a numeric Status Code between 400-599.
      */
     statusCode?: number,
+
     /**
      * Specify a redirect URL in case of a http error.
      */
     redirectURL?: string,
 
     /**
-     * Permit additional properties
+     * Provide additional options.
      */
     [key: string]: any
 }

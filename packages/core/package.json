@@ -19,7 +19,11 @@
         "exception",
         "debug",
         "error-handling",
-        "error"
+        "error",
+        "options",
+        "merge",
+        "build",
+        "options"
     ],
     "repository": {
         "type": "git",
