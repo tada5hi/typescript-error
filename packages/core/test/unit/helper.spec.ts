@@ -1,13 +1,12 @@
 /*
- * Copyright (c) 2022.
+ * Copyright (c) 2022-2022.
  * Author Peter Placzek (tada5hi)
  * For the full copyright and license information,
  * view the LICENSE file that was distributed with this source code.
  */
 
 // eslint-disable-next-line max-classes-per-file
-import { BaseError } from '../../../src';
-import { extendsBaseError } from '../../../src/utils/extends';
+import { BaseError, extendsBaseError } from '../../src';
 
 describe('src/utils/extends.ts', () => {
     it('should determine inheritance', () => {
