@@ -24,14 +24,21 @@ export function mergeErrorOptions(
 
     const source = sources.shift();
 
-    if (isObject(target) && isObject(source)) {
+    if (
+        isObject(target) &&
+        isObject(source)
+    ) {
         const keys = Object.keys(source);
         for (let i = 0; i < keys.length; i++) {
             if (isObject(source[keys[i]])) {
                 /* istanbul ignore next */
                 if (!target[keys[i]]) Object.assign(target, { [keys[i]]: {} });
+
+                // dont merge class instances to prevent circular references
                 /* istanbul ignore next */
-                mergeErrorOptions(target[keys[i]], source[keys[i]]);
+                if (Object.prototype.toString.call(source[keys[i]]) === '[object Object]') {
+                    mergeErrorOptions(target[keys[i]], source[keys[i]]);
+                }
             } else {
                 Object.assign(target, { [keys[i]]: source[keys[i]] });
             }
