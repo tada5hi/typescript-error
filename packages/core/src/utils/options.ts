@@ -34,11 +34,12 @@ export function mergeErrorOptions(
                 /* istanbul ignore next */
                 if (!target[keys[i]]) Object.assign(target, { [keys[i]]: {} });
 
-                // dont merge class instances to prevent circular references
+                // dont merge objects deep to prevent circular references
                 /* istanbul ignore next */
-                if (Object.prototype.toString.call(source[keys[i]]) === '[object Object]') {
-                    mergeErrorOptions(target[keys[i]], source[keys[i]]);
-                }
+                target[keys[i]] = {
+                    ...target[keys[i]],
+                    ...sources[keys[i]],
+                };
             } else {
                 Object.assign(target, { [keys[i]]: source[keys[i]] });
             }

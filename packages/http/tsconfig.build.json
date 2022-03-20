@@ -3,7 +3,12 @@
 
     "compilerOptions": {
         "outDir": "./dist",
-        "lib": ["dom", "ES6"]
+        "lib": ["dom", "ES6"],
+        "paths": {
+            "@typescript-error/core": [
+                "./packages/core/src"
+            ]
+        }
     },
 
     "include": [
