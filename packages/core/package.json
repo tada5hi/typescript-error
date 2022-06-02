@@ -41,8 +41,8 @@
         "test:coverage": "cross-env NODE_ENV=test jest --config ./test/jest.config.js --coverage"
     },
     "devDependencies": {
-        "@types/jest": "^27.4.0",
-        "jest": "^27.4.6",
+        "@types/jest": "^28.1.0",
+        "jest": "^28.1.0",
         "rimraf": "^3.0.2",
         "ts-jest": "^27.1.2"
     },
